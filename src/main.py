@@ -1,4 +1,5 @@
 import pygame
+from pyfiglet import figlet_format
 from constants import *
 from player import Player, Shot
 from asteroid import Asteroid
@@ -24,6 +25,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     asteroid_field = AsteroidField()
+    score = 0
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -33,12 +35,15 @@ def main():
             u.update(dt)
         for a in asteroids:
             if a.is_colliding(player):
-                print("Game over!")
+                print("\n\n\n--- GAME OVER !! ---\n\n")
+                print("--- SCORE --- \n")
+                print(figlet_format(str(score)))
                 return
             for s in shots:
                 if a.is_colliding(s):
                     s.kill()
                     a.split()
+                    score += 1
 
         for d in drawable:
             d.draw(screen)
