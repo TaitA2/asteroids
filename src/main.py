@@ -49,11 +49,6 @@ def main():
             d.draw(screen)
         pygame.display.flip()
         dt = clock.tick(0) / 1000
-
-
-
-        
-
-
+     
 if __name__ == "__main__":
     main()
