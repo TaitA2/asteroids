@@ -38,11 +38,10 @@ def main():
         for a in asteroids:
             if a.is_colliding(player):
                 if score > high_score:
-                    high_score = score
-                    f.write(high_score)
+                    high_score = str(score)
                     f = open("high_score.txt", "w")
                     f.write(high_score)
-                    print("\n\n\n--- NEW HIGH SCORE !! ---\n\n")
+                    print(figlet_format("\nNEW HIGH SCORE"))
 
                 print("\n\n\n--- GAME OVER !! ---\n\n")
 
